@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2013 Allogy Interactive.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License"); you may not
+  ~ use this file except in compliance with the License. You may obtain a copy of
+  ~ the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  ~ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+  ~ License for the specific language governing permissions and limitations under
+  ~ the License.
+  -->
+
+<resources>
+	<color name="background">#ffffffff</color>
+    <color name="ab_background_start">#ffba0014</color>
+    <color name="ab_background_end">#ffde0019</color>
+    <color name="ab_text">#ffffffff</color>
+    <color name="ab_text_alt">#ff000000</color>
+    <color name="ab_separator">#40ffffff</color>
+    <color name="header_light">#ffd2a582</color>
+    <color name="header_dark">#ff3c230a</color>
+    <color name="text">#ff3c230a</color>
+    
+    <color name="red">#ffff0000</color>
+    <color name="blue">#ff00ff00</color>
+    <color name="green">#ff0000ff</color>
+    <color name="gray">#ff808080</color>
+    <color name="black">#ff000000</color>
+    <color name="white">#ffffffff</color>
+    <color name="separator">#40ffffff</color>
+    
+    <!-- Content Items -->
+    <color name="content_header_background">#ff4b4b4b</color>
+    <color name="content_item_light">#ffc8c8c8</color>
+    <color name="content_item_dark">#ff4b4b4b</color>
+    <color name="content_item_highlight">#fffeaf19</color>
+    
+    <!-- List Items -->
+    <color name="lesson_start">#ffc8c8c8</color>
+    <color name="lesson_end">#ffe6e6e6</color>
+</resources>

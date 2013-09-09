@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2013 Allogy Interactive.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License"); you may not
+  ~ use this file except in compliance with the License. You may obtain a copy of
+  ~ the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  ~ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+  ~ License for the specific language governing permissions and limitations under
+  ~ the License.
+  -->
+
+<resources>
+	<string name="app_name">Allogy</string>
+	<string name="app_label">Allogy</string>
+
+	<!-- Registration -->
+	<string name="register_username_hint">Username</string>
+	<string name="register_code_hint">Mon code d\'identification Allogy</string>
+	<string name="register_phone_hint">Mon numéro de téléphone</string>
+	<string name="register_gateway_hint">Mon numéro du centre de communication Allogy</string>
+	<string name="register_button">Vérifiez</string>
+
+    <!-- Localizable -->
+    <string name="accept_terms">Cliquez, vérifiez indiquent que vous êtes d\'accord avec les Termes d\'Utilisation</string>
+    <string name="loading_content">Le téléchargement est en cours</string>
+    <string name="publisher">Editeur</string>
+    <string name="courses">Cours</string>
+    <string name="lessons">Leçons</string>
+    <string name="files">Dossiers</string>
+    <string name="deadlines">Délai</string>
+    <string name="quiz_nav_help">“Utilisez les flèches gauche et droite sur la barre de navigation en haut pour aller d\'une question à une autre. Répondez à toutes les questionsm ensuite écrivez votre nom complet à la fin puis envoyez."</string>
+    <string name="ptl_level_1">Manuel Niveau 1</string>
+    <string name="ptl_level_2">Manuel Niveau 2</string>
+    <string name="ptl_level_3">Manuel Niveau 3</string>
+    <string name="prompt_unlock_code">Entrez le code de deerouillage par SMS</string>
+    <string name="enter">Entrez</string>
+    <string name="cancel">Annulez</string>
+    <string name="objectives">Objectifs</string>
+    <string name="ask_question"> Avez-vous une question?</string>
+    <string name="ask_a_question">Posez une question</string>
+    <string name="send">Envoyez</string>
+    <string name="take_quiz">Faire le test</string>
+    <string name="no_quiz">Pas de test</string>
+    <string name="choose_one_of_the_following">Choisissez une des options suivantes:</string>
+    <string name="question">Question</string>
+    <string name="your_answer">Votre reponse</string>
+    <string name="submit">Envoyez</string>
+    
+    <string name="home_name">Allogy</string>
+	<string name="classroom_name">Salle de classe</string>
+	<string name="library_name">Bibliothèque</string>
+	<string name="market_name">Market</string>
+	<string name="achievements_name">Achievements</string>
+	<string name="social_name">Discussions</string>
+	<string name="teach_name">Teach</string>
+	<string name="search_name">Search</string>
+	<string name="about_name">About</string>
+	<string name="quiz_name">Quiz</string>
+	<string name="community_name">Community</string>
+	<string name="html_name">HTML Viewer</string>
+
+	<string name="search_hint">Search Allogy</string>
+	<string name="search_settingsDescription">Editeur, Cours, Livres</string>
+	<string name="search_voicePromptText">Search Allogy via Voice</string>
+	<string name="search_voiceLanguage">en</string>
+
+	<string name="no_content_available">No Content Available</string>
+
+	<!-- Annotation ListView Context Menu -->
+	<string name="annotation_listview_context_menu_header">Annotation List</string>
+	<string name="annotation_listview_context_menu_edit">Edit</string>
+	<string name="annotation_listview_context_menu_delete">Delete</string>
+
+	<!-- Audio Player Service -->
+	<string name="audioplayerservice_notification_id">Audio Player Service</string>
+
+	<!-- Lesson Activity Strings -->
+	<string name="objectives_button">Objectives</string>
+	<string name="take_test">Take Test</string>
+	<string name="video">Video Content</string>
+	<string name="flash">Flash Content</string>
+	<string name="audio">Audio Content</string>
+	<string name="resources">Resources</string>
+	<string name="websites">websites</string>
+	<string name="books">Livres</string>
+	<string name="book">Book</string>
+
+	<!-- Developer Info Strings -->
+	<string name="website">Website</string>
+	<string name="location">Location</string>
+	<string name="oursesoffered">Courses Offered</string>
+	<string name="text">texttexttext</string>
+	<string name="coursesoffered">Courses Offered</string>
+
+	<!-- File Scanner -->
+	<string name="filescanner_descr">Click on the button below to scan and update
+		the
+		database of the application</string>
+		
+	<!-- Quiz Activity -->
+	<string name="quiz_short_answer_hint">Max 140 Characters</string>
+	
+	<!-- Library Strings -->
+	<string name="about_button">More Info.</string>
+	
+	<!-- For changing the settings -->
+	<string name="settings_name">Allogy Settings</string>
+	<string name="settings_phone_num">Phone Number</string>
+	<string name="summary_phone_num"> The Summary of the phone number setting</string>
+	<string name="dialog_title_phone_num">Enter the Allogy phone number</string>
+	<string name="preference_phone_num_key">phone_num</string>
+	<string name="preference_gateway_key">gateway</string>
+	<string name="preference_verified_key">verified</string>
+	
+	<!-- Community Activity -->
+	<string name="instructor_list_title">INSTRUCTORS</string>
+	<string name="student_list_title">STUDENTS</string>
+	
+	<!-- Settings -->
+	<string name="encryption">DISABLE</string>
+	
+</resources>

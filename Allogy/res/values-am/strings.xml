@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2013 Allogy Interactive.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License"); you may not
+  ~ use this file except in compliance with the License. You may obtain a copy of
+  ~ the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  ~ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+  ~ License for the specific language governing permissions and limitations under
+  ~ the License.
+  -->
+
+<resources>
+	<string name="app_name">Allogy</string>
+	<string name="app_label">Allogy</string>
+
+	<!-- Registration -->
+	<string name="register_username_hint">Username</string>
+	<string name="register_code_hint">የኔ አሎጂ ማረጋገጫ ኮድ</string>
+	<string name="register_phone_hint">የኔ ስልክ ቁጥር</string>
+	<string name="register_gateway_hint">የኔ አሎጂ ኮሚንኬሽን ሴንተር ቁጥር</string>
+	<string name="register_button">ማረጋገጫ</string>
+
+    <!-- Localizable -->
+    <string name="accept_terms">ማረጋገጫን  በመጫን በደንቡ ላይ መስማማቶን ያረጋግጡ</string>
+    <string name="loading_content">እየከፈተ ነው</string>
+    <string name="publisher">አሳታሚ</string>
+    <string name="courses">የትምህርት  አይነት</string>
+    <string name="lessons">የትምህርት ክፍል</string>
+    <string name="files">መዝገቦች</string>
+    <string name="deadlines">የመጨረሻ ማስረከቢያ ቀን</string>
+    <string name="quiz_nav_help">ከጥያቄ ወደ ጥያቄ ለመሸጋገር ከላይ ባለው ባር ላይ ያሉትን ወደ ግራና ቀኝ የሚያመለክቱትን ቀስቶች ይጠቀሙ  ሁሉንም ጥያቄዎች መልሰው ከጨረሱ በሁዋላ አስረብ የሚለውን ቁልፍ ይጫኑ</string>
+    <string name="ptl_level_1">ፒቲኤል የመጀመሪያ ደረጃ መመሪያ</string>
+    <string name="ptl_level_2">ፒቲኤል የመጀመሪያ ደረጃ መመሪያ</string>
+    <string name="ptl_level_3">ፒቲኤል የመጀመሪያ ደረጃ መመሪያ</string>
+    <string name="prompt_unlock_code">የመክፈቻ ቁልፍ ከኤስ ኤም ኤስ አስገባ</string>
+    <string name="enter">ግባ</string>
+    <string name="cancel">ሰርዝ</string>
+    <string name="objectives">አላማ</string>
+    <string name="ask_question">ጥያቄ</string>
+    <string name="ask_a_question">ጥያቄ መጠየቅያ</string>
+    <string name="send">ላክ</string>
+    <string name="take_quiz">ፈተና ውሰድ</string>
+    <string name="no_quiz">ፈተና የለም</string>
+    <string name="choose_one_of_the_following">ከሚከተሉት አንዱን ይምረጡ</string>
+    <string name="question">ጥያቄ</string>
+    <string name="your_answer">የእርሶ መልስ</string>
+    <string name="submit">አስረክብ</string>
+    
+	<string name="home_name">Allogy</string>
+	<string name="classroom_name">መማሪያ ክፍል</string>
+	<string name="library_name">ቤተ-መጸሀፍት</string>
+	<string name="market_name">Market</string>
+	<string name="achievements_name">Achievements</string>
+	<string name="social_name">Discussions</string>
+	<string name="teach_name">Teach</string>
+	<string name="search_name">Search</string>
+	<string name="about_name">About</string>
+	<string name="quiz_name">Quiz</string>
+	<string name="community_name">Community</string>
+	<string name="html_name">HTML Viewer</string>
+
+	<string name="search_hint">Search Allogy</string>
+	<string name="search_settingsDescription">አሳታሚ, ትምህርቶች, መፅሐፍቶች</string>
+	<string name="search_voicePromptText">Search Allogy via Voice</string>
+	<string name="search_voiceLanguage">en</string>
+
+	<string name="no_content_available">No Content Available</string>
+
+	<!-- Annotation ListView Context Menu -->
+	<string name="annotation_listview_context_menu_header">Annotation List</string>
+	<string name="annotation_listview_context_menu_edit">Edit</string>
+	<string name="annotation_listview_context_menu_delete">Delete</string>
+
+	<!-- Audio Player Service -->
+	<string name="audioplayerservice_notification_id">Audio Player Service</string>
+
+	<!-- Lesson Activity Strings -->
+	<string name="objectives_button">Objectives</string>
+	<string name="take_test">Take Test</string>
+	<string name="video">Video Content</string>
+	<string name="flash">Flash Content</string>
+	<string name="audio">Audio Content</string>
+	<string name="resources">Resources</string>
+	<string name="websites">websites</string>
+	<string name="books">መጸሀፍት</string>
+	<string name="book">Book</string>
+
+	<!-- Developer Info Strings -->
+	<string name="website">Website</string>
+	<string name="location">Location</string>
+	<string name="oursesoffered">Courses Offered</string>
+	<string name="text">texttexttext</string>
+	<string name="coursesoffered">Courses Offered</string>
+
+	<!-- File Scanner -->
+	<string name="filescanner_descr">Click on the button below to scan and update
+		the
+		database of the application</string>
+		
+	<!-- Quiz Activity -->
+	<string name="quiz_short_answer_hint">Max 140 Characters</string>
+
+	<!-- Library Strings -->
+	<string name="about_button">More Info.</string>
+	
+	<!-- For changing the settings -->
+	<string name="settings_name">Allogy Settings</string>
+	<string name="settings_phone_num">Phone Number</string>
+	<string name="summary_phone_num"> The Summary of the phone number setting</string>
+	<string name="dialog_title_phone_num">Enter the Allogy phone number</string>
+	<string name="preference_phone_num_key">phone_num</string>
+	<string name="preference_gateway_key">gateway</string>
+	<string name="preference_verified_key">verified</string>
+	
+	<!-- Community Activity -->
+	<string name="instructor_list_title">INSTRUCTORS</string>
+	<string name="student_list_title">STUDENTS</string>
+	
+	<!-- Settings -->
+	<string name="encryption">DISABLE</string>	
+	
+</resources>

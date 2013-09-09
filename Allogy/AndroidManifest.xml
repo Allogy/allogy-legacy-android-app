@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2013 Allogy Interactive.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License"); you may not
+  ~ use this file except in compliance with the License. You may obtain a copy of
+  ~ the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  ~ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+  ~ License for the specific language governing permissions and limitations under
+  ~ the License.
+  -->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	android:versionCode="15" android:versionName="3.39"
+	android:installLocation="preferExternal" package="com.allogy.app">
+
+	<application android:name="com.allogy.app.AllogyApplication"
+		android:icon="@drawable/launch_icon" android:label="@string/app_name"
+		android:allowClearUserData="true"
+		android:theme="@style/Theme.Allogy">
+		<!-- Change the below activity to just .VerifyActivity if you don't want to do the
+			bypassing -->
+		<activity android:name=".VerifyActivity" android:label="@string/app_name"
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop" android:screenOrientation="portrait">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+
+		<activity android:name=".HomeActivity" />
+
+		<activity android:name=".AboutActivity" />
+
+		<activity android:name=".AchievementsActivity" />
+
+		<activity android:name=".ClassroomActivity"
+			android:screenOrientation="portrait" />
+
+		<activity android:name=".CommunityActivity" />
+
+		<activity android:name=".LibraryActivity" />
+
+		<activity android:name=".MarketActivity" />
+
+		<activity android:name=".SocialActivity" />
+
+		<activity android:name=".TeachActivity" />
+
+		<activity android:name=".LessonActivity" />
+
+		<activity android:name=".PublisherInfoActivity" />
+
+		<activity android:name=".SettingsActivity" />
+
+		<activity android:name=".util.FileScannerActivity" />
+
+		<activity android:name=".media.QuizActivity"
+			android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.Light.NoTitleBar" />
+
+		<activity android:name=".media.HtmlActivity" />
+
+		<activity android:name=".media.FlashViewerActivity" />
+
+		<activity android:name=".media.VideoPlayerActivity"
+			android:windowSoftInputMode="adjustPan" 
+			android:theme="@android:style/Theme.Light.NoTitleBar" />
+
+		<activity android:name=".media.EReaderActivity"
+			android:screenOrientation="landscape"
+			android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+
+		<activity android:name=".media.AudioPlayerActivity"
+			android:launchMode="singleInstance" 
+			android:screenOrientation="portrait"
+			android:windowSoftInputMode="adjustPan">
+		</activity>
+
+		<activity android:name=".SearchActivity" android:launchMode="singleTop">
+			<intent-filter>
+				<action android:name="android.intent.action.SEARCH" />
+			</intent-filter>
+
+			<meta-data android:name="android.app.searchable"
+				android:resource="@xml/searchable" />
+		</activity>
+
+		<meta-data android:name="android.app.default_searchable"
+			android:value=".SearchActivity" />
+
+		<!-- Services -->
+		<service android:name=".media.AudioPlayerService">
+		</service>
+
+		<!-- Receivers -->
+		<!-- Uncomment this when you want to enable the community activity -->
+		<!-- <receiver android:name=".sms.SMSReceiver">
+			<intent-filter android:priority="10001">
+				<action android:name="android.provider.Telephony.SMS_RECEIVED" />
+			</intent-filter>
+		</receiver> -->
+
+		<!-- Providers -->
+
+		<provider android:name=".provider.NotesProvider"
+			android:authorities="com.allogy.app.provider.notes" />
+
+		<provider android:name=".provider.AcademicProvider"
+			android:authorities="com.allogy.app.provider.academic" />
+
+	</application>
+
+	<uses-sdk android:minSdkVersion="8" />
+
+	<uses-permission android:name="android.permission.SEND_SMS" />
+	<uses-permission android:name="android.permission.RECEIVE_SMS" />
+	<uses-permission android:name="android.permission.READ_SMS" />
+	<uses-permission android:name="android.permission.WRITE_SMS" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+</manifest> 

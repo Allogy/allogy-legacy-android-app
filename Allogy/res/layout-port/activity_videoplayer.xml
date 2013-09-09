@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2013 Allogy Interactive.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License"); you may not
+  ~ use this file except in compliance with the License. You may obtain a copy of
+  ~ the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  ~ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+  ~ License for the specific language governing permissions and limitations under
+  ~ the License.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:allogy="http://schemas.android.com/apk/res/com.allogy.app"
+	android:id="@+id/parentLayout" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+
+	<!-- Quick access header -->
+	<LinearLayout android:id="@+id/videoplayer_header" style="@style/UI.TitleBar">
+		<ImageButton android:id="@+id/videoplayer_ibtn_home"
+			style="@style/UI.TitleBarAction" android:src="@drawable/ic_title_home"
+			android:onClick="HeaderButtonsListener" />
+
+		<TextView android:id="@+id/videoplayer_tv_header"
+			android:text="Allogy" style="@style/UI.TitleBarText" />
+
+		<ImageButton android:id="@+id/videoplayer_ibtn_add_notes"
+			android:src="@drawable/icon_add" style="@style/UI.TitleBarAction"
+			android:onClick="ButtonsListener" />
+
+		<ImageButton android:id="@+id/videoplayer_ibtn_list_notes"
+			android:text="" android:src="@drawable/notes" style="@style/UI.TitleBarAction"
+			android:onClick="ButtonsListener" />
+
+		<ImageButton android:id="@+id/videoplayer_ibtn_search"
+			android:src="@drawable/ic_title_search" style="@style/UI.TitleBarAction"
+			android:onClick="HeaderButtonsListener" />
+	</LinearLayout>
+
+	<!-- Notes viewer -->
+	<ListView android:id="@+id/videoplayer_lv_notes"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_below="@+id/videoplayer_header"
+		android:layout_alignBottom="@+id/videoplayer_et_note"
+		android:visibility="invisible" />
+
+	<TextView android:id="@+id/videoplayer_tv_note"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_below="@+id/videoplayer_header" android:text=""
+		android:lines="9" android:marqueeRepeatLimit="marquee_forever"
+		android:visibility="visible" />
+
+	<EditText android:id="@+id/videoplayer_et_note"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_below="@+id/videoplayer_header" android:lines="6"
+		android:gravity="top|left" android:inputType="textMultiLine"
+		android:visibility="invisible" />
+
+	<!-- Video player -->
+	<LinearLayout android:gravity="center"
+	    android:id="@+id/videoplayer_allogyvideoview_container"
+	    android:layout_width="320dp"
+	    android:layout_height="240dp"
+	    android:layout_alignParentBottom="true"
+	    android:background="@android:color/transparent">
+		<com.allogy.app.ui.AllogyVideoView
+			android:id="@+id/videoplayer_allogyvideoview" 
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" 
+			android:layout_gravity="center" >
+		</com.allogy.app.ui.AllogyVideoView>
+	</LinearLayout>
+	
+	<!-- Media control buttons -->
+	<ImageButton android:id="@+id/videoplayer_ibtn_scanback"
+		style="@style/MediaButton" android:layout_height="wrap_content"
+		android:layout_width="wrap_content" android:layout_alignTop="@+id/videoplayer_ibtn_playback"
+		android:layout_toLeftOf="@+id/videoplayer_ibtn_playback" android:src="@drawable/prev_button"
+		android:visibility="invisible" android:onClick="ButtonsListener" />
+
+	<ImageButton android:id="@+id/videoplayer_ibtn_playback"
+		style="@style/MediaButton" android:layout_height="wrap_content"
+		android:layout_width="wrap_content" android:layout_alignTop="@+id/videoplayer_allogyvideoview_container"
+		android:layout_centerHorizontal="true" android:src="@drawable/pause_button"
+		android:visibility="invisible" android:onClick="ButtonsListener" />
+
+	<ImageButton android:id="@+id/videoplayer_ibtn_scanforward"
+		style="@style/MediaButton" android:layout_height="wrap_content"
+		android:layout_width="wrap_content" android:layout_alignTop="@+id/videoplayer_ibtn_playback"
+		android:layout_toRightOf="@+id/videoplayer_ibtn_playback" android:src="@drawable/fwd_button"
+		android:visibility="invisible" android:onClick="ButtonsListener" />
+
+	<com.allogy.app.ui.AnnotatedProgressBar
+		android:id="@+id/videoplayer_progress" android:layout_width="fill_parent"
+		android:layout_height="50px" android:layout_alignBottom="@+id/videoplayer_allogyvideoview_container"
+		android:visibility="invisible" />
+
+	<!-- Note saving buttons -->
+	<Button android:id="@+id/videoplayer_btn_savenote"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_alignTop="@+id/videoplayer_ibtn_playback"
+		android:layout_toLeftOf="@+id/videoplayer_ibtn_scanback" android:text="Save"
+		android:visibility="invisible" android:onClick="ButtonsListener" />
+	<Button android:id="@+id/videoplayer_btn_cancelnote"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_alignTop="@+id/videoplayer_ibtn_playback"
+		android:layout_toRightOf="@+id/videoplayer_ibtn_scanforward"
+		android:text="Cancel" android:visibility="invisible" android:onClick="ButtonsListener" />
+</RelativeLayout>

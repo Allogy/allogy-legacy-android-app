@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2013 Allogy Interactive.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License"); you may not
+  ~ use this file except in compliance with the License. You may obtain a copy of
+  ~ the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  ~ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+  ~ License for the specific language governing permissions and limitations under
+  ~ the License.
+  -->
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent">
+	<LinearLayout android:layout_width="fill_parent"
+		android:layout_height="fill_parent" android:orientation="vertical"
+		android:background="@drawable/default_background">
+
+		<!-- Action Bar -->
+		<LinearLayout style="@style/UI.TitleBar">
+			<TextView style="@style/UI.TitleBarText" android:text="@string/home_name" />
+
+			<ImageButton style="@style/UI.TitleBarAction"
+				android:src="@drawable/ic_title_search" android:onClick="onSearchClick" />
+		</LinearLayout>
+
+		<!-- Navigation -->
+		<RelativeLayout android:id="@+id/home_body"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:layout_below="@+id/activity_header" android:gravity="center">
+
+			<Button android:id="@+id/home_classroom" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:layout_marginRight="20dip"
+				android:background="@drawable/home_classroom_selector" />
+
+			<Button android:id="@+id/home_market" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:layout_toRightOf="@+id/home_classroom"
+				android:layout_marginLeft="20dip" android:background="@drawable/home_market_selector"
+				android:visibility="gone" />
+
+			<Button android:id="@+id/home_community" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:layout_below="@+id/home_classroom"
+				android:background="@drawable/home_community_selector" 
+				android:visibility="gone" />
+
+			<Button android:id="@+id/home_library" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:layout_toRightOf="@+id/home_classroom"
+				android:layout_alignLeft="@+id/home_market" android:background="@drawable/home_library_selector" />
+
+			<Button android:id="@+id/home_achievements"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:layout_below="@+id/home_community" android:background="@drawable/home_achievements_selector"
+				android:visibility="gone" />
+
+			<Button android:id="@+id/home_teach" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:layout_toRightOf="@+id/home_achievements"
+				android:layout_below="@+id/home_library" android:layout_alignLeft="@+id/home_library"
+				android:background="@drawable/home_teach_selector"
+				android:visibility="gone" />
+
+		</RelativeLayout>
+
+	</LinearLayout>
+	<SlidingDrawer android:id="@+id/home_deadline_drawer"
+		android:layout_width="match_parent" android:layout_height="fill_parent"
+		android:handle="@+id/home_drawer_handle" android:content="@+id/home_drawer_content">
+		<TextView android:id="@+id/home_drawer_handle"
+			android:layout_width="match_parent" android:layout_height="50dp"
+			android:gravity="center_horizontal|center_vertical"
+			android:background="@drawable/action_bar_background_gradient"
+			android:text="@string/deadlines" android:textColor="@color/white"
+			android:textSize="18sp">
+		</TextView>
+		<LinearLayout android:id="@+id/home_drawer_content"
+			android:layout_width="match_parent" android:layout_height="wrap_content"
+			android:orientation="vertical" android:background="@color/white">
+			<ListView android:id="@+id/home_deadline_list"
+				android:layout_height="match_parent" android:layout_width="match_parent" />
+		</LinearLayout>
+	</SlidingDrawer>
+</FrameLayout>

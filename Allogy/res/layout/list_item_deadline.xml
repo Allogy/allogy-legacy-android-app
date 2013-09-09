@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2013 Allogy Interactive.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License"); you may not
+  ~ use this file except in compliance with the License. You may obtain a copy of
+  ~ the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  ~ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+  ~ License for the specific language governing permissions and limitations under
+  ~ the License.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	style="@style/Container.ListItem" android:layout_height="wrap_content"
+	android:padding="7dp" android:gravity="center_vertical"
+	android:background="@drawable/title_button">
+
+	<TextView android:id="@+id/list_item_deadline_title"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:paddingBottom="5dp" android:text="Lesson Title Goes Here"
+		android:textColor="@color/black" android:textSize="18sp" />
+
+	<TextView android:id="@+id/list_item_course_title"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_gravity="center_vertical" android:textColor="@color/black"
+		android:text="Course Title Here" android:layout_alignParentBottom="true"
+		android:visibility="gone" />
+
+	<TextView android:id="@+id/list_item_deadline_remaining_value"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_gravity="center_vertical"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentRight="true" android:text="2d 11hrs 57mins"
+		android:textColor="@color/black" android:textStyle="bold" />
+
+</RelativeLayout>

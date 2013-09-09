@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2013 Allogy Interactive.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License"); you may not
+  ~ use this file except in compliance with the License. You may obtain a copy of
+  ~ the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  ~ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+  ~ License for the specific language governing permissions and limitations under
+  ~ the License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:allogy="http://schemas.android.com/apk/res/com.allogy.app"
+	android:layout_width="match_parent" android:layout_height="match_parent"
+	android:orientation="vertical" android:background="@color/white">
+
+	<!-- Action Bar -->
+	<LinearLayout style="@style/UI.TitleBar">
+		<ImageButton style="@style/UI.TitleBarAction" android:src="@drawable/ic_title_home"
+			android:onClick="onHomeClick" />
+		<ImageView style="@style/UI.TitleBarSeparator" />
+
+		<TextView style="@style/UI.TitleBarText" android:text="@string/library_name" />
+
+		<ImageView style="@style/UI.TitleBarSeparator" />
+		<ImageButton style="@style/UI.TitleBarAction" android:src="@drawable/ic_title_search"
+			android:onClick="onSearchClick" />
+	</LinearLayout>
+	
+	<!-- Buttons to toggle state of display to view book collection or file collection -->
+	<LinearLayout android:orientation="horizontal"
+		android:layout_width="match_parent" android:layout_height="wrap_content">
+		<com.allogy.app.ui.AutoButton android:id="@+id/library_button_books"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			allogy:percent_width="50" allogy:percent_height="10" android:text="@string/books"
+			android:background="@drawable/tab_background_selector" />
+
+		<com.allogy.app.ui.AutoButton android:id="@+id/library_button_files"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			allogy:percent_width="50" allogy:percent_height="10" android:text="@string/files"
+			android:background="@drawable/tab_background_selector" />
+	</LinearLayout>
+	
+	<!-- Grid layout for books to be arranged in -->
+	<GridView android:id="@+id/library_gridview"
+		android:layout_width="fill_parent" 
+		android:layout_height="fill_parent"
+		android:columnWidth="90dp" 
+		android:numColumns="auto_fit"
+		android:verticalSpacing="10dp" 
+		android:horizontalSpacing="10dp"
+		android:stretchMode="columnWidth" 
+		android:gravity="center">
+	</GridView>
+
+</LinearLayout>

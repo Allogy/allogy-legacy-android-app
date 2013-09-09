@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2013 Allogy Interactive.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License"); you may not
+  ~ use this file except in compliance with the License. You may obtain a copy of
+  ~ the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  ~ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+  ~ License for the specific language governing permissions and limitations under
+  ~ the License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+
+	<!-- Action Bar -->
+	<LinearLayout style="@style/UI.TitleBar">
+		<ImageButton style="@style/UI.TitleBarAction" android:src="@drawable/ic_title_home"
+			android:onClick="onHomeClick" />
+		<ImageView style="@style/UI.TitleBarSeparator" />
+
+		<TextView style="@style/UI.TitleBarText" android:text="@string/classroom_name" />
+
+		<ImageView style="@style/UI.TitleBarSeparator" />
+		<ImageButton style="@style/UI.TitleBarAction" android:src="@drawable/ic_title_search"
+			android:onClick="onSearchClick" />
+	</LinearLayout>
+
+	<ScrollView android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+		<LinearLayout android:layout_height="fill_parent"
+			android:layout_width="fill_parent" android:orientation="vertical"
+			android:paddingTop="15dip" android:paddingBottom="10dip"
+			android:paddingLeft="15dip" android:paddingRight="15dip"
+			android:gravity="center_horizontal">
+
+			<!-- Publisher Logo + Publisher Name -->
+			<LinearLayout android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:orientation="vertical">
+
+				<TextView android:id="@+id/publisher_title"
+					android:text="Institute for Simulation and Training"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:layout_gravity="center_horizontal" android:textColor="@color/black"
+					android:textSize="18sp" android:textStyle="bold">
+				</TextView>
+
+				<ImageView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:id="@+id/publisher_logo"
+					android:minWidth="200dp" android:minHeight="100dp"
+					android:src="@drawable/default_cover">
+				</ImageView>
+
+			</LinearLayout>
+
+			<ImageView style="@style/Divider" />
+
+			<!-- Website -->
+			<LinearLayout style="@style/Container.ContentItem"
+				android:onClick="onWebsiteClick">
+				<TextView style="@style/Text.ContentLabel" android:text="@string/website"></TextView>
+				<TextView android:id="@+id/publisher_website" style="@style/Text.ContentText"
+					android:text="www.google.com" android:layout_weight="2"></TextView>
+			</LinearLayout>
+
+			<ImageView style="@style/Divider" />
+
+			<!-- Address -->
+			<LinearLayout style="@style/Container.ContentItem"
+				android:onClick="onAddressClick">
+				<TextView style="@style/Text.ContentLabel" android:text="@string/location"></TextView>
+
+				<ImageView style="@style/Divider" />
+
+				<TextView android:id="@+id/publisher_address" style="@style/Text.ContentText"
+					android:text="@string/location" android:inputType="textMultiLine"
+					android:textSize="12sp"></TextView>
+			</LinearLayout>
+
+			<ImageView style="@style/Divider" />
+
+			<!-- Email -->
+			<LinearLayout style="@style/Container.ContentItem"
+				android:onClick="onEmailClick">
+				<TextView style="@style/Text.ContentLabel" android:text="Email"></TextView>
+				<TextView android:id="@+id/publisher_email" style="@style/Text.ContentText"
+					android:text="@string/location"></TextView>
+			</LinearLayout>
+
+			<ImageView style="@style/Divider" />
+
+			<!-- Phone -->
+			<LinearLayout style="@style/Container.ContentItem"
+				android:onClick="onPhoneClick">
+				<TextView style="@style/Text.ContentLabel" android:text="Phone"></TextView>
+				<TextView android:id="@+id/publisher_phone" style="@style/Text.ContentText"
+					android:text="@string/location"></TextView>
+			</LinearLayout>
+
+			<ImageView style="@style/Divider" />
+
+			<!-- Description -->
+			<TextView android:id="@+id/publisher_description"
+				android:layout_width="match_parent" android:layout_height="wrap_content"
+				android:padding="7dp" android:background="@color/content_item_light"
+				android:textColor="@color/black" android:textSize="12sp"
+				android:inputType="textMultiLine" android:text="@string/text"></TextView>
+
+
+		</LinearLayout>
+	</ScrollView>
+
+</LinearLayout>
+

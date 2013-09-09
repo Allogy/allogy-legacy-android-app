@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2013 Allogy Interactive.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License"); you may not
+  ~ use this file except in compliance with the License. You may obtain a copy of
+  ~ the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  ~ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+  ~ License for the specific language governing permissions and limitations under
+  ~ the License.
+  -->
+
+<resources>
+	<string name="app_name">Allogy</string>
+	<string name="app_label">Allogy</string>
+
+	<!-- Registration -->
+	<string name="register_username_hint">Username</string>
+	<string name="register_code_hint">My Allogy Authentication Code</string>
+	<string name="register_phone_hint">My Phone Number</string>
+	<string name="register_gateway_hint">My Allogy Communication Center Phone Number</string>
+	<string name="register_button">Verify</string>
+
+    <!-- Localizable -->
+    <string name="accept_terms">Clicking Verify indicates agreement to the Terms of Use</string>
+    <string name="loading_content">Loading Content</string>
+    <string name="publisher">Publisher</string>
+    <string name="courses">Courses</string>
+    <string name="lessons">Lessons</string>
+    <string name="files">Files</string>
+    <string name="deadlines">Deadlines</string>
+    <string name="quiz_nav_help">“Use the left and right arrows on the navigation bar on top to move between questions. Answer all questions then fill in your name at the end and hit submit”.</string>
+    <string name="ptl_level_1">PTL-Level-1</string>
+    <string name="ptl_level_2">PTL-Level-2</string>
+    <string name="ptl_level_3">PTL-Level-3</string>
+    <string name="prompt_unlock_code">Enter Unlock Code From SMS</string>
+    <string name="enter">Enter</string>
+    <string name="cancel">Cancel</string>
+    <string name="objectives">Objectives</string>
+    <string name="ask_question">Ask Question?</string>
+    <string name="ask_a_question">Ask A Question</string>
+    <string name="send">Send</string>
+    <string name="take_quiz">Take Quiz</string>
+    <string name="no_quiz">No Quiz</string>
+    <string name="choose_one_of_the_following">Choose one of the following:</string>
+    <string name="question">Question</string>
+    <string name="your_answer">Your answer</string>
+    <string name="submit">Submit</string>
+    
+	<string name="home_name">Allogy</string>
+	<string name="classroom_name">Classroom</string>
+	<string name="library_name">Library</string>
+	<string name="market_name">Market</string>
+	<string name="achievements_name">Achievements</string>
+	<string name="social_name">Discussions</string>
+	<string name="teach_name">Teach</string>
+	<string name="search_name">Search</string>
+	<string name="about_name">About</string>
+	<string name="quiz_name">Quiz</string>
+	<string name="community_name">Community</string>
+	<string name="html_name">HTML Viewer</string>
+
+	<string name="search_hint">Search Allogy</string>
+	<string name="search_settingsDescription">Publishers, Courses, Books</string>
+	<string name="search_voicePromptText">Search Allogy via Voice</string>
+	<string name="search_voiceLanguage">en</string>
+
+	<string name="no_content_available">No Content Available</string>
+
+	<!-- Annotation ListView Context Menu -->
+	<string name="annotation_listview_context_menu_header">Annotation List</string>
+	<string name="annotation_listview_context_menu_edit">Edit</string>
+	<string name="annotation_listview_context_menu_delete">Delete</string>
+
+	<!-- Audio Player Service -->
+	<string name="audioplayerservice_notification_id">Audio Player Service</string>
+
+	<!-- Lesson Activity Strings -->
+	<string name="objectives_button">Objectives</string>
+	<string name="take_test">Take Test</string>
+	<string name="video">Video Content</string>
+	<string name="flash">Flash Content</string>
+	<string name="audio">Audio Content</string>
+	<string name="resources">Resources</string>
+	<string name="websites">websites</string>
+	<string name="books">books</string>
+	<string name="book">Book</string>
+
+	<!-- Developer Info Strings -->
+	<string name="website">Website</string>
+	<string name="location">Location</string>
+	<string name="oursesoffered">Courses Offered</string>
+	<string name="text">texttexttext</string>
+	<string name="coursesoffered">Courses Offered</string>
+
+	<!-- File Scanner -->
+	<string name="filescanner_descr">Click on the button below to scan and update
+		the
+		database of the application</string>
+		
+	<!-- Quiz Activity -->
+	<string name="quiz_short_answer_hint">Max 140 Characters</string>
+
+	<!-- Library Strings -->
+	<string name="about_button">More Info.</string>
+	
+	<!-- For changing the settings -->
+	<string name="settings_name">Allogy Settings</string>
+	<string name="settings_phone_num">Phone Number</string>
+	<string name="summary_phone_num"> The Summary of the phone number setting</string>
+	<string name="dialog_title_phone_num">Enter the Allogy phone number</string>
+	<string name="preference_phone_num_key">phone_num</string>
+	<string name="preference_gateway_key">gateway</string>
+	<string name="preference_verified_key">verified</string>
+	
+	<!-- Community Activity -->
+	<string name="instructor_list_title">INSTRUCTORS</string>
+	<string name="student_list_title">STUDENTS</string>
+	
+	<!-- Settings -->
+	<string name="encryption">DISABLE</string>
+	
+</resources>

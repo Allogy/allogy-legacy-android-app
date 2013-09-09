@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2013 Allogy Interactive.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License"); you may not
+  ~ use this file except in compliance with the License. You may obtain a copy of
+  ~ the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  ~ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+  ~ License for the specific language governing permissions and limitations under
+  ~ the License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	  android:orientation="vertical"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_vertical|center_horizontal">
+        <ImageView android:id="@+id/sdcard"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+	      android:layout_gravity="center_vertical|center_horizontal"
+          android:src="@drawable/sdcard_img">
+        </ImageView>
+        <LinearLayout android:id="@+id/init"
+		  android:orientation="vertical"
+	      android:layout_width="wrap_content"
+	      android:layout_height="wrap_content"
+	      android:layout_gravity="center_vertical|center_horizontal"
+	      android:visibility="gone">
+	        <TextView android:id="@+id/descr1"
+	          android:textSize="16px"
+	          android:layout_width="200px"
+	          android:layout_height="100px"
+	          android:gravity="center_horizontal|center_vertical"
+	          android:text="@string/filescanner_descr">
+	        </TextView>
+	        <Button android:id="@+id/scanbutton"
+	          android:textSize="24px"
+	          android:layout_width="wrap_content"
+	          android:layout_height="wrap_content"
+		      android:layout_gravity="center_vertical|center_horizontal"
+	          android:text="SCAN">
+	        </Button>
+	    </LinearLayout>
+	    <LinearLayout android:id="@+id/proc"
+			  android:orientation="vertical"
+		      android:layout_width="wrap_content"
+		      android:layout_height="wrap_content"
+		      android:layout_gravity="center_vertical|center_horizontal"
+		      android:visibility="gone">
+		    <TextView android:id="@+id/descr2"
+	          android:textSize="16px"
+	          android:layout_width="wrap_content"
+	          android:layout_height="60dip"
+	          android:gravity="center_horizontal|center_vertical"
+	          android:text="Scanning for Changes/Additions">
+	        </TextView>
+		    <TextView android:id="@+id/file_name"
+	          android:textSize="16px"
+	          android:layout_width="wrap_content"
+	          android:layout_height="wrap_content"
+	          android:gravity="center_vertical">
+	        </TextView>
+	        <ProgressBar android:id="@+id/prog_bar"
+	          android:layout_width="220dip"
+	          android:layout_height="wrap_content"
+	          style="?android:attr/progressBarStyleHorizontal"
+		      android:layout_gravity="center_horizontal|center_vertical"
+		      android:indeterminateOnly="true"
+		      android:max="2500">
+	        </ProgressBar>
+	    </LinearLayout>
+        <LinearLayout android:id="@+id/end"
+		  android:orientation="vertical"
+	      android:layout_width="wrap_content"
+	      android:layout_height="wrap_content"
+	      android:layout_gravity="center_vertical|center_horizontal"
+	      android:visibility="gone">
+	        <TextView android:id="@+id/descr3"
+	          android:textSize="16px"
+ 	          android:layout_width="200px"
+	          android:layout_height="100px"
+	          android:gravity="center_horizontal|center_vertical"
+	          android:text="@string/filescanner_descr">
+	        </TextView>
+	        <Button android:id="@+id/rescanbutton"
+	          android:textSize="24px"
+	          android:layout_width="wrap_content"
+	          android:layout_height="wrap_content"
+		      android:layout_gravity="center_vertical|center_horizontal"
+	          android:text="RESCAN">
+	        </Button>
+	    </LinearLayout>
+	     
+</LinearLayout>

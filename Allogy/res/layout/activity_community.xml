@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2013 Allogy Interactive.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License"); you may not
+  ~ use this file except in compliance with the License. You may obtain a copy of
+  ~ the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  ~ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+  ~ License for the specific language governing permissions and limitations under
+  ~ the License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:orientation="vertical" android:background="@drawable/default_background">
+
+	<!-- Action Bar -->
+	<LinearLayout style="@style/UI.TitleBar">
+		<!-- First the home button -->
+		<ImageButton style="@style/UI.TitleBarAction" android:src="@drawable/ic_title_home"
+			android:onClick="onHomeClick" />
+		<ImageView style="@style/UI.TitleBarSeparator" />
+		<!-- Title for the activity -->
+		<TextView style="@style/UI.TitleBarText" android:text="@string/community_name" />
+		<ImageView style="@style/UI.TitleBarSeparator" />
+		<!-- Button for sending message -->
+		<Button style="@style/UI.TitleBarAction" android:id="@+id/sms_button"
+			android:gravity="center" android:textColor="@color/ab_text"
+			android:text="SMS" />
+		<ImageView style="@style/UI.TitleBarSeparator" />
+		<!-- Button to search -->
+		<ImageButton style="@style/UI.TitleBarAction" android:src="@drawable/ic_title_search"
+			android:onClick="onSearchClick" />
+	</LinearLayout>
+
+	<!-- Instructors List -->
+	<TextView android:text="@string/instructor_list_title"
+		android:gravity="center" android:layout_height="wrap_content"
+		android:layout_width="fill_parent" android:typeface="monospace"
+		android:textStyle="bold" android:textSize="20dip" android:textColor="@color/ab_text_alt"
+		android:visibility="gone" />
+	<ListView android:id="@+id/instructor_list"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:visibility="gone" />
+	<TextView android:id="@+id/empty_instructor_list"
+		android:text="No Instructors found" android:layout_height="wrap_content"
+		android:layout_width="fill_parent" android:typeface="monospace"
+		android:textStyle="italic" android:textSize="18dip" android:textColor="@color/ab_text_alt"
+		android:paddingLeft="10dip" android:visibility="gone" />
+
+	<!-- Students List -->
+	<TextView android:text="@string/student_list_title"
+		android:gravity="center" android:layout_height="wrap_content"
+		android:layout_width="fill_parent" android:typeface="monospace"
+		android:textStyle="bold" android:textSize="20dip" android:textColor="@color/ab_text_alt" />
+	<ListView android:id="@+id/student_list" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+	<TextView android:id="@+id/empty_student_list" android:text="No Students found"
+		android:layout_height="wrap_content" android:layout_width="fill_parent"
+		android:typeface="monospace" android:textStyle="italic"
+		android:textSize="18dip" android:paddingLeft="10dip"
+		android:textColor="@color/ab_text_alt" android:visibility="gone" />
+
+</LinearLayout>
