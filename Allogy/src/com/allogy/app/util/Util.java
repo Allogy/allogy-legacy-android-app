@@ -37,6 +37,7 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.util.Log;
 
+import com.allogy.app.AllogyApplication;
 import com.allogy.app.R;
 
 public final class Util {
@@ -45,12 +46,15 @@ public final class Util {
 	// /
 
 	public static final int OUT_OF_BOUNDS = -1;
-	public static final String KEY_DIRECTORY = Environment
-			.getExternalStorageDirectory().toString() + "/Allogy/Keys/";
-	public static final String ENCRYPTED_DIRECTORY = Environment
-			.getExternalStorageDirectory().toString() + "/Allogy/Encrypted/";
-	public static final String DECRYPTED_DIRECTORY = Environment
-			.getExternalStorageDirectory().toString() + "/Allogy/Decrypted/";
+	public static String KEY_DIRECTORY;
+	public static String ENCRYPTED_DIRECTORY;
+	public static String DECRYPTED_DIRECTORY;
+
+    static {
+        KEY_DIRECTORY = ContentLocation.getContentLocation(AllogyApplication.getContext()) + "/Keys/";
+        ENCRYPTED_DIRECTORY = ContentLocation.getContentLocation(AllogyApplication.getContext()) + "/Encrypted/";
+        DECRYPTED_DIRECTORY = ContentLocation.getContentLocation(AllogyApplication.getContext()) + "/Decrypted/";
+    }
 
 	// /
 	// / METHODS

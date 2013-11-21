@@ -40,6 +40,7 @@ import com.allogy.app.R.string;
 import com.allogy.app.SettingsActivity;
 import com.allogy.app.provider.Academic;
 import com.allogy.app.provider.Academic.Progress;
+import com.allogy.app.util.ContentLocation;
 import com.allogy.app.xml.parsers.QuizParser;
 import org.xml.sax.SAXException;
 
@@ -141,8 +142,7 @@ public class QuizActivity extends Activity {
 			Log.i("QuizActivity", "Loading Quiz for Lesson: " + mLessonId);
 			Log.i("QuizActivity", "Loading Quiz from : " + mPath);
 
-			quiz = parseQuiz(this, Environment.getExternalStorageDirectory()
-					+ "/Allogy/Files/" + mPath);
+			quiz = parseQuiz(this, ContentLocation.getContentLocation(this) + "/Files/" + mPath);
 
 			setContentView(R.layout.activity_quiz);
 			
