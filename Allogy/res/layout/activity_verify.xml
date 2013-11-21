@@ -64,7 +64,7 @@
 		android:layout_height="wrap_content" android:layout_width="120dp"
 		android:text="@string/register_button"
 		android:layout_gravity="center_horizontal"
-		android:onClick="onVerify"
+		android:onClick="onPreVerify"
 		android:padding="10dp"/>
 	
 </LinearLayout>
