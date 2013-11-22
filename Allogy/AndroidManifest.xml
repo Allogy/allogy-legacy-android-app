@@ -16,7 +16,7 @@
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	android:versionCode="16" android:versionName="3.40"
+	android:versionCode="16" android:versionName="3.41-SNAPSHOT"
 	android:installLocation="preferExternal" package="com.allogy.app">
 
 	<application android:name="com.allogy.app.AllogyApplication"
