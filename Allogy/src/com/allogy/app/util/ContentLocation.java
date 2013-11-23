@@ -10,10 +10,8 @@ import android.util.Log;
 import com.allogy.app.SettingsActivity;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Scanner;
+import java.io.FileFilter;
+import java.util.*;
 
 public class ContentLocation {
 
@@ -29,8 +27,11 @@ public class ContentLocation {
     public static String contentLocation = null;
 
     public static void searchAllogyContent(Context context) {
+
+        // First check using the android apis
         checkInRegularLocation(context);
 
+        // Then check the mounts and Vold files
         if(contentLocation == null) {
             // Hack begins from here
             readMountsFile();
@@ -38,6 +39,11 @@ public class ContentLocation {
             compareMountsWithVold();
             testAndCleanMountsList();
             checkInMountsLocation();
+        }
+
+        // check every directory inside the "/" directory
+        if(contentLocation == null) {
+            checkUnderDirectory("/");
         }
 
         if(contentLocation != null) {
@@ -49,17 +55,82 @@ public class ContentLocation {
 
     }
 
+    private static final class DirFilter implements FileFilter {
+
+        @Override
+        public boolean accept(File pathname) {
+
+            if(pathname.isDirectory() && pathname.canRead()) {
+                return true;
+            }
+            return false;
+        }
+
+    }
+
+    private static void checkUnderDirectory(final String dirName) {
+
+        try {
+            Log.i(TAG, "Checking under directory : " + dirName);
+
+            File file = new File(dirName);
+
+            if(!file.exists()) {
+                return;
+            }
+
+            checkContentAt(file.getAbsolutePath());
+
+            if(contentLocation != null) {
+                return;
+            }
+
+            // It is not present in the current location
+            File[] dirs = file.listFiles(new DirFilter());
+            if((dirs == null) || (dirs.length == 0)) {
+                return;
+            }
+
+            // Create a queue and put the directories
+            Queue<File> dirQueue = new LinkedList<File>();
+            for(File dir : dirs) {
+                Log.i(TAG, "Enqueued directory " + dir.getAbsolutePath());
+                dirQueue.add(dir);
+            }
+
+            // Perform the same operation on the children
+            Iterator<File> dirIterator = dirQueue.iterator();
+            while (dirIterator.hasNext()) {
+                File nextFile = dirIterator.next();
+                checkUnderDirectory(nextFile.getAbsolutePath());
+                if(contentLocation != null) {
+                    return;
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+
+        }
+
+    }
+
     private static void checkInRegularLocation(Context context) {
 
         try {
 
-//            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-//                File[] externalStorageDirectories = context.getExternalFilesDirs(null);
-//                for(File f: externalStorageDirectories) {
-//                    Log.i(TAG, "Found External Storage Directory : " + f.getAbsolutePath());
-//                    Log.i(TAG, "Parent : " + f.getParentFile().getAbsolutePath());
-//                }
-//            }
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                File[] externalStorageDirectories = context.getExternalFilesDirs(null);
+                for(File f: externalStorageDirectories) {
+                    checkAllParents(f.getAbsolutePath());
+                    if(contentLocation != null) {
+                        return;
+                    }
+                    Log.i(TAG, "Found External Storage Directory : " + f.getAbsolutePath());
+                    Log.i(TAG, "Parent : " + f.getParentFile().getAbsolutePath());
+                }
+            }
 
             // Check the content in the primary external storage
             File pryExtStorage = Environment.getExternalStorageDirectory();
@@ -195,6 +266,26 @@ public class ContentLocation {
             if(gotIt) {
                 return;
             }
+        }
+
+    }
+
+    private static void checkAllParents(String pathName) {
+
+        try {
+            if(pathName == null) {
+                return;
+            }
+
+            File atPath = new File(pathName);
+            checkContentAt(atPath.getAbsolutePath());
+
+            if(contentLocation == null) {
+                checkAllParents(atPath.getParent());
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
