@@ -33,11 +33,13 @@ import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Binder;
+import android.os.Build;
 import android.os.IBinder;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
+import android.widget.Toast;
 import com.allogy.app.R;
 import com.allogy.app.adapter.AudioPlaylistArrayAdapter;
 import com.allogy.app.provider.Academic;
@@ -400,7 +402,14 @@ public final class AudioPlayerService extends Service implements PlaybackTimer {
 
 			currentAudio = audio;
 
-			File audioFile = new File(currentAudio.getUri());
+            File audioFile = null;
+
+            if(shouldCache()) {
+                String cacheFile = Util.cacheAudioFileWithExtension(AudioPlayerService.this, currentAudio.getUri());
+                audioFile = new File(cacheFile);
+            } else {
+                audioFile = new File(currentAudio.getUri());
+            }
 			
 			if(DBG_LOG_ENABLE) {
 				Log.i(LOG_TAG, "playbackHasStopped : " + playbackHasStopped +
@@ -421,11 +430,13 @@ public final class AudioPlayerService extends Service implements PlaybackTimer {
 					if(DBG_LOG_ENABLE) {
 						ise.printStackTrace();
 					}
+                    Toast.makeText(AudioPlayerService.this, Build.MANUFACTURER, Toast.LENGTH_LONG).show();
 				} catch (IOException ioe) {
 					playbackPrepared = false;
 					if(DBG_LOG_ENABLE) {
 						ioe.printStackTrace();
 					}
+                    Toast.makeText(AudioPlayerService.this, Build.MANUFACTURER, Toast.LENGTH_LONG).show();
 				}
 			}
 
@@ -694,4 +705,18 @@ public final class AudioPlayerService extends Service implements PlaybackTimer {
 			return new AudioPlaylistArrayAdapter(context, mPlayList);
 		}
 	}
+
+    private boolean shouldCache() {
+        if(Build.MANUFACTURER.toLowerCase().contains("akash")) {
+            return true;
+        }
+
+        if(Build.MANUFACTURER.toLowerCase().contains("vmc")) {
+            return true;
+        }
+
+        Log.i("AudioPlayerService", "Caching not used");
+        return false;
+    }
+
 }

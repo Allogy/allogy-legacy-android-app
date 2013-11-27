@@ -16,10 +16,7 @@
 
 package com.allogy.app.util;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -33,6 +30,7 @@ import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Environment;
 import android.os.StatFs;
 import android.util.Log;
@@ -242,4 +240,36 @@ public final class Util {
 
 		return false;
 	}
+
+    public static String cacheAudioFileWithExtension(Context context, String srcFileUri) {
+
+        File cacheDir = context.getCacheDir();
+        File oldFile = new File(cacheDir, "temp.mp3");
+
+        if(oldFile.exists()) {
+            boolean success = oldFile.delete();
+        }
+
+        File newFile = new File(cacheDir, "temp.mp3");
+        File srcFile = new File(srcFileUri);
+
+        try {
+            InputStream in = new FileInputStream(srcFile);
+            OutputStream out = new FileOutputStream(newFile);
+
+            byte[] buf = new byte[1024];
+            int len;
+            while ((len = in.read(buf)) > 0) {
+                out.write(buf, 0, len);
+            }
+            in.close();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return newFile.getAbsolutePath();
+
+    }
+
 }
