@@ -52,7 +52,7 @@ import java.util.ArrayList;
 public class QuizActivity extends Activity {
 	
 	private static final String TAG = "QuizActivity";
-	private static final boolean DBG_LOG_ENABLE = true;
+	private static final boolean DBG_LOG_ENABLE = false;
 	private static final String LAST_MESSAGE = "last_message";
 	
 	private static final String QUIZ_TAG = "QUIZ(id:";
