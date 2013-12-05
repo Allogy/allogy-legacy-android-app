@@ -119,6 +119,7 @@ public class SettingsActivity extends ListActivity {
 	public static final String PREF_VERIFIED = "verified";
 	public static final String PREF_GATEWAY = "gateway";
     public static final String PREF_CONTENT_PATH = "content_path";
+    public static final String PREF_AUDIO_CACHE = "audio_cache";
 
 	private static final String[] preferences = new String[] {
 			"Gateway Number", "Phone Number" };

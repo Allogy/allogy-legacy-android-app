@@ -25,6 +25,7 @@ import java.util.regex.Pattern;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
@@ -33,10 +34,13 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.StatFs;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
+import android.widget.Toast;
 import com.allogy.app.AllogyApplication;
 import com.allogy.app.R;
+import com.allogy.app.SettingsActivity;
 
 public final class Util {
 	// /
@@ -243,14 +247,16 @@ public final class Util {
 
     public static String cacheAudioFileWithExtension(Context context, String srcFileUri) {
 
-        File cacheDir = context.getCacheDir();
-        File oldFile = new File(cacheDir, "temp.mp3");
+        final String cacheFilePath = File.separator + "temp.mp3";
 
-        if(oldFile.exists()) {
-            boolean success = oldFile.delete();
+        String contentLocation = ContentLocation.getContentLocation(context);
+        File cacheFile = new File(contentLocation, cacheFilePath);
+
+        if(cacheFile.exists()) {
+            boolean success = cacheFile.delete();
         }
 
-        File newFile = new File(cacheDir, "temp.mp3");
+        File newFile = new File(contentLocation, cacheFilePath);
         File srcFile = new File(srcFileUri);
 
         try {
@@ -270,6 +276,23 @@ public final class Util {
 
         return newFile.getAbsolutePath();
 
+    }
+
+    public static boolean audioCachePref(Context context) {
+        return PreferenceManager.getDefaultSharedPreferences
+                (context.getApplicationContext()).getBoolean(SettingsActivity.PREF_AUDIO_CACHE, false);
+    }
+
+    public static boolean audioCachePrefExists(Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext())
+                                .contains(SettingsActivity.PREF_AUDIO_CACHE);
+    }
+
+    public static void setAudioCachePref(Context context, boolean cachePref) {
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext()).edit();
+        editor.putBoolean(SettingsActivity.PREF_AUDIO_CACHE, cachePref);
+        editor.commit();
+        return;
     }
 
 }
