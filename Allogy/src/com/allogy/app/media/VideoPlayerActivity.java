@@ -61,6 +61,7 @@ import com.allogy.app.ui.ActionItem;
 import com.allogy.app.ui.AllogyVideoView;
 import com.allogy.app.ui.AnnotatedProgressBar;
 import com.allogy.app.ui.QuickAction;
+import com.allogy.app.util.ContentLocation;
 import com.allogy.app.util.Util;
 
 /**
@@ -293,8 +294,8 @@ public class VideoPlayerActivity extends Activity implements
 				// sdcard.
 				mCurrentVideo = new VideoItem(
 						lessonfileid,
-						Environment.getExternalStorageDirectory()
-								+ "/Allogy/Decrypted/"
+						ContentLocation.getContentLocation(this)
+								+ "/Decrypted/"
 								+ cursor.getString(
 										cursor.getColumnIndexOrThrow(Academic.LessonFiles.URI))
 										.replace(".mp4", "").trim());

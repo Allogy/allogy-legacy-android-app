@@ -32,6 +32,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.allogy.app.provider.Academic;
+import com.allogy.app.util.ContentLocation;
 
 public class PublisherInfoActivity extends Activity {
 
@@ -182,7 +183,7 @@ public class PublisherInfoActivity extends Activity {
 
     // Logo
     if (mInfo.logo != null && mInfo.logo.length() > 0) {
-    	String logo = Environment.getExternalStorageDirectory() + "/Allogy/Icons/" + mInfo.logo;
+    	String logo = ContentLocation.getContentLocation(this) + "/Icons/" + mInfo.logo;
     	File logoFile = new File(logo);
 
       if (logoFile.exists() && !logoFile.isDirectory()) {

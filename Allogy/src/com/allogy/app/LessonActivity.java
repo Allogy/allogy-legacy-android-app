@@ -39,6 +39,7 @@ import com.allogy.app.media.*;
 import com.allogy.app.provider.Academic;
 import com.allogy.app.provider.Academic.LessonFiles;
 import com.allogy.app.provider.Academic.Progress;
+import com.allogy.app.util.ContentLocation;
 
 import java.io.File;
 import java.util.List;
@@ -273,8 +274,8 @@ public class LessonActivity extends BaseActivity {
 				// set the media banner to a snapshot in the video
 				snippet = new BitmapDrawable(
 						ThumbnailUtils.createVideoThumbnail(
-								Environment.getExternalStorageDirectory()
-										+ "/Allogy/Decrypted/"
+								ContentLocation.getContentLocation(this)
+										+ "/Decrypted/"
 										+ mMediaUri.replace(".mp4", "").trim(),
 								1));
 				mMediaContentImage.setBackgroundDrawable(snippet);
@@ -486,9 +487,7 @@ public class LessonActivity extends BaseActivity {
 			if (o.getCount() > 0) {
 				o.moveToFirst();
 				Intent i = new Intent(this, HtmlActivity.class);
-				i.setData(Uri.fromFile(new File(Environment
-						.getExternalStorageDirectory()
-						+ "/Allogy/Files/"
+				i.setData(Uri.fromFile(new File(ContentLocation.getContentLocation(this) + "/Files/"
 						+ o.getString(o.getColumnIndexOrThrow(LessonFiles.URI)))));
 				startActivity(i);
 			}

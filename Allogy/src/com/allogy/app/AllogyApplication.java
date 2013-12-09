@@ -17,6 +17,7 @@
 package com.allogy.app;
 
 import android.app.Application;
+import android.content.Context;
 
 /**
  * @author Pramod Chakrapani
@@ -25,11 +26,21 @@ import android.app.Application;
 public class AllogyApplication extends Application {
 	
 	private final Boolean enableEncryption = false;
-	
-	public Boolean isEncryptionEnabled() {
+
+    private static Context mInstance = null;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        mInstance = getApplicationContext();
+    }
+
+    public Boolean isEncryptionEnabled() {
 		return enableEncryption;
 	}
-	
 
+    public static Context getContext() {
+        return mInstance;
+    }
 
 }

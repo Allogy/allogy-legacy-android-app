@@ -58,6 +58,7 @@ import com.allogy.app.provider.Notes;
 import com.allogy.app.ui.ActionItem;
 import com.allogy.app.ui.AnnotatedProgressBar;
 import com.allogy.app.ui.QuickAction;
+import com.allogy.app.util.ContentLocation;
 import com.allogy.app.util.Util;
 
 /**
@@ -408,8 +409,8 @@ public class AudioPlayerActivity extends Activity {
 		if (cursor != null) {
 			if (cursor.moveToFirst()) {
 				mCurrentAudio = new AudioItem(id, 
-						Environment.getExternalStorageDirectory()
-						+ "/Allogy/Decrypted/"
+						ContentLocation.getContentLocation(this)
+						+ "/Decrypted/"
 						+ cursor.getString(
 								cursor.getColumnIndexOrThrow(Academic.LessonFiles.URI))
 								.replace(".mp3", "").trim());

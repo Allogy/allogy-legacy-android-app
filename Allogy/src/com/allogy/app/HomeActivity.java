@@ -184,7 +184,7 @@ public class HomeActivity extends BaseActivity {
 				/*i.putExtra(EReaderActivity.EXTRA_EBOOK_TYPE,
 						EReaderActivity.TYPE_PLAINTEXT);
 				i.putExtra(EReaderActivity.EXTRA_FILE_URI,
-						"/sdcard/Allogy/Library/text_sample.txt");*/
+						"/Library/text_sample.txt");*/
 
 				/* Start the quiz activity to test */
 				/* i.setClass(HomeActivity.this, QuizActivity.class);
@@ -224,7 +224,7 @@ public class HomeActivity extends BaseActivity {
 		values.put(Academic.LessonFiles.MEDIA_TYPE,
 				Academic.CONTENT_TYPE_PLAINTEXT);
 		values.put(Academic.LessonFiles.URI,
-				"/sdcard/Allogy/Library/text_sample.txt");
+				"/Library/text_sample.txt");
 		values.put(Academic.LessonFiles.FILESIZE, 100000);
 		this.getContentResolver().insert(Academic.LessonFiles.CONTENT_URI,
 				values);
@@ -241,7 +241,7 @@ public class HomeActivity extends BaseActivity {
 		 * Academic.Publishers.DESCRIPTION,
 		 * "The purpose of the University is to educate and train men and women committed to Christ as Lord and Saviour from an evangelical Christian perspective in order to equip them to provide leadership to the Church and society and spearhead spiritual, social and cultural transformation in Africa and the World."
 		 * ); values.put(Academic.Publishers.LOGO,
-		 * "/sdcard/Allogy/Icons/nist.png");
+		 * "/Icons/nist.png");
 		 * values.put(Academic.Publishers.ADDRESS_LINE_1, "P.O Box 60954 ");
 		 * values.put(Academic.Publishers.ADDRESS_LINE_2, "00200");
 		 * values.put(Academic.Publishers.CITY, "Nairobi");
@@ -270,25 +270,25 @@ public class HomeActivity extends BaseActivity {
 		 * 
 		 * // test books values.clear(); values.put(Academic.Book._ID, 10);
 		 * values.put(Academic.Book.AUTHOR, "Habitat for Humanity");
-		 * values.put(Academic.Book.COVER, "/sdcard/Allogy/Icons/pdf_logo.png");
+		 * values.put(Academic.Book.COVER, "/Icons/pdf_logo.png");
 		 * values.put(Academic.Book.DESCRIPTION,
 		 * "The first chapter in the book of John.");
 		 * values.put(Academic.Book.PRICE, "Free");
 		 * values.put(Academic.Book.PUBLISHER_ID, pubid);
 		 * values.put(Academic.Book.TITLE, "John 1");
-		 * values.put(Academic.Book.PATH, "/sdcard/Allogy/Library/TestPDF.pdf");
+		 * values.put(Academic.Book.PATH, "/Library/TestPDF.pdf");
 		 * Uri pdf1 = this.getContentResolver().insert(
 		 * Academic.Book.CONTENT_URI, values);
 		 * 
 		 * values.clear(); values.put(Academic.Book._ID, 11);
 		 * values.put(Academic.Book.AUTHOR, "Habitat for Humanity");
-		 * values.put(Academic.Book.COVER, "/sdcard/Allogy/pdf_logo.png");
+		 * values.put(Academic.Book.COVER, "/pdf_logo.png");
 		 * values.put(Academic.Book.DESCRIPTION, "Safety Manual");
 		 * values.put(Academic.Book.PRICE, "Free");
 		 * values.put(Academic.Book.PUBLISHER_ID, pubid);
 		 * values.put(Academic.Book.TITLE, "Safety Manual");
 		 * values.put(Academic.Book.PATH,
-		 * "/sdcard/Allogy/Safety_Lesson/Safety_Manual.pdf"); Uri pdf2 =
+		 * "/Safety_Lesson/Safety_Manual.pdf"); Uri pdf2 =
 		 * this.getContentResolver().insert(Academic.Book.CONTENT_URI, values);
 		 * 
 		 * Log.i("HomeActivity", pdf1.toString()); Log.i("HomeActivity",
@@ -331,7 +331,7 @@ public class HomeActivity extends BaseActivity {
 		 * values.put(Academic.LessonFiles.LESSON_ID, id);
 		 * values.put(Academic.LessonFiles.MEDIA_TYPE,
 		 * Academic.CONTENT_TYPE_VIDEO); values.put(Academic.LessonFiles.URI,
-		 * "/sdcard/Allogy/Decrypted/video_med.mp4");
+		 * "/Decrypted/video_med.mp4");
 		 * values.put(Academic.LessonFiles.FILESIZE, 78573); long temp =
 		 * ContentUris.parseId(this.getContentResolver().insert(
 		 * Academic.LessonFiles.CONTENT_URI, values)); //
@@ -359,7 +359,7 @@ public class HomeActivity extends BaseActivity {
 		 * values.put(Academic.LessonFiles.LESSON_ID, id);
 		 * values.put(Academic.LessonFiles.MEDIA_TYPE,
 		 * Academic.CONTENT_TYPE_QUIZ); values.put(Academic.LessonFiles.URI,
-		 * "/sdcard/Allogy/Lesson1/intro_quiz.xml");
+		 * "/Lesson1/intro_quiz.xml");
 		 * values.put(Academic.LessonFiles.FILESIZE, 100000);
 		 * this.getContentResolver().insert(Academic.LessonFiles.CONTENT_URI,
 		 * values);
@@ -384,7 +384,7 @@ public class HomeActivity extends BaseActivity {
 		 * values.put(Academic.LessonFiles.LESSON_ID, id);
 		 * values.put(Academic.LessonFiles.MEDIA_TYPE,
 		 * Academic.CONTENT_TYPE_VIDEO); values.put(Academic.LessonFiles.URI,
-		 * "/sdcard/Allogy/Lesson2/L1_1_2.mp4");
+		 * "/Lesson2/L1_1_2.mp4");
 		 * values.put(Academic.LessonFiles.FILESIZE, 7049312);
 		 * this.getContentResolver().insert(Academic.LessonFiles.CONTENT_URI,
 		 * values);
@@ -420,7 +420,7 @@ public class HomeActivity extends BaseActivity {
 		 * values.put(Academic.LessonFiles.LESSON_ID, id);
 		 * values.put(Academic.LessonFiles.MEDIA_TYPE,
 		 * Academic.CONTENT_TYPE_QUIZ); values.put(Academic.LessonFiles.URI,
-		 * "/sdcard/Allogy/Lesson2/intro_quiz.xml");
+		 * "/Lesson2/intro_quiz.xml");
 		 * values.put(Academic.LessonFiles.FILESIZE, 100000);
 		 * this.getContentResolver().insert(Academic.LessonFiles.CONTENT_URI,
 		 * values);
@@ -430,7 +430,7 @@ public class HomeActivity extends BaseActivity {
 		 * values.put(Academic.LessonFiles.MEDIA_TYPE,
 		 * Academic.CONTENT_TYPE_PLAINTEXT);
 		 * values.put(Academic.LessonFiles.URI,
-		 * "/sdcard/Allogy/Library/text_sample.txt");
+		 * "/Library/text_sample.txt");
 		 * values.put(Academic.LessonFiles.FILESIZE, 100000);
 		 * this.getContentResolver().insert(Academic.LessonFiles.CONTENT_URI,
 		 * values);
@@ -451,7 +451,7 @@ public class HomeActivity extends BaseActivity {
 		 * values.put(Academic.LessonFiles.LESSON_ID, id);
 		 * values.put(Academic.LessonFiles.MEDIA_TYPE,
 		 * Academic.CONTENT_TYPE_FLASH); values.put(Academic.LessonFiles.URI,
-		 * "/sdcard/Allogy/Safety_Lesson/HFH_Construction_Safety.flv");
+		 * "/Safety_Lesson/HFH_Construction_Safety.flv");
 		 * values.put(Academic.LessonFiles.FILESIZE, 7049312);
 		 * this.getContentResolver ().insert(Academic.LessonFiles.CONTENT_URI,
 		 * values);
@@ -475,7 +475,7 @@ public class HomeActivity extends BaseActivity {
 			values.put(Academic.LessonFiles.MEDIA_TYPE,
 					Academic.CONTENT_TYPE_PLAINTEXT);
 			values.put(Academic.LessonFiles.URI,
-					"/sdcard/Allogy/Library/text_sample.txt");
+					"/Library/text_sample.txt");
 			values.put(Academic.LessonFiles.FILESIZE, 100000);
 			c.getContentResolver().insert(Academic.LessonFiles.CONTENT_URI,
 					values);
@@ -488,7 +488,7 @@ public class HomeActivity extends BaseActivity {
 		values.put(Academic.LessonFiles.MEDIA_TYPE,
 				Academic.CONTENT_TYPE_LIBRARY_HTML);
 		values.put(Academic.LessonFiles.URI,
-				"/Allogy/Library/PTL/PTL-Level-1.html");
+				"/Library/PTL/PTL-Level-1.html");
 		values.put(Academic.LessonFiles.FILESIZE, 100000);
 		c.getContentResolver().insert(Academic.LessonFiles.CONTENT_URI,
 				values);
@@ -500,7 +500,7 @@ public class HomeActivity extends BaseActivity {
 		values.put(Academic.LessonFiles.MEDIA_TYPE,
 				Academic.CONTENT_TYPE_LIBRARY_HTML);
 		values.put(Academic.LessonFiles.URI,
-				"/Allogy/Library/PTL/PTL-Level-2.html");
+				"/Library/PTL/PTL-Level-2.html");
 		values.put(Academic.LessonFiles.FILESIZE, 100000);
 		c.getContentResolver().insert(Academic.LessonFiles.CONTENT_URI,
 				values);
@@ -512,7 +512,7 @@ public class HomeActivity extends BaseActivity {
 		values.put(Academic.LessonFiles.MEDIA_TYPE,
 				Academic.CONTENT_TYPE_LIBRARY_HTML);
 		values.put(Academic.LessonFiles.URI,
-				"/Allogy/Library/PTL/PTL-Level-3.html");
+				"/Library/PTL/PTL-Level-3.html");
 		values.put(Academic.LessonFiles.FILESIZE, 100000);
 		c.getContentResolver().insert(Academic.LessonFiles.CONTENT_URI,
 				values);
@@ -524,7 +524,7 @@ public class HomeActivity extends BaseActivity {
 		values.put(Academic.LessonFiles.MEDIA_TYPE,
 				Academic.CONTENT_TYPE_LIBRARY_HTML);
 		values.put(Academic.LessonFiles.URI,
-				"/Allogy/Library/nlt_word/NLT-Bible.html");
+				"/Library/nlt_word/NLT-Bible.html");
 		values.put(Academic.LessonFiles.FILESIZE, 100000);
 		c.getContentResolver().insert(Academic.LessonFiles.CONTENT_URI,
 				values);

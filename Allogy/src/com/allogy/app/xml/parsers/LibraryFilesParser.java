@@ -35,7 +35,7 @@ import android.content.Context;
 public class LibraryFilesParser extends DefaultHandler {
 
     private static int lessonFileId = 9999;
-    private static final String LIBRARY_PATH_PREFIX = "/Allogy/Library/";
+    private static final String LIBRARY_PATH_PREFIX = "/Library/";
 
 	private Context mContext;
 	

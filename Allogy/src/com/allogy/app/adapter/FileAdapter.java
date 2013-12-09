@@ -37,10 +37,12 @@ import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.allogy.app.AllogyApplication;
 import com.allogy.app.R;
 import com.allogy.app.media.EReaderActivity;
 import com.allogy.app.media.HtmlActivity;
 import com.allogy.app.provider.Academic;
+import com.allogy.app.util.ContentLocation;
 import com.allogy.app.util.Util;
 
 public class FileAdapter extends CursorAdapter {
@@ -109,8 +111,7 @@ public class FileAdapter extends CursorAdapter {
 		switch (mediaType) {
 			case Academic.CONTENT_TYPE_PLAINTEXT:
 				libFileViews.fileIcon.setImageBitmap(decodeFile(new File(
-						Environment.getExternalStorageDirectory()
-								+ "/Allogy/Icons/text_icon.png")));
+						ContentLocation.getContentLocation(mActivity) + "/Icons/text_icon.png")));
 				libFileViews.fileName.setText(Util.getFileNameFromPath(URI)
 						.replace(".txt", "").replace("_", " "));
 				break;
@@ -121,8 +122,7 @@ public class FileAdapter extends CursorAdapter {
 				break;
 			case (Academic.CONTENT_TYPE_LIBRARY_HTML):
 				libFileViews.fileIcon.setImageBitmap(decodeFile(new File(
-						Environment.getExternalStorageDirectory()
-						+ "/Allogy/Icons/html_icon.png")));
+						ContentLocation.getContentLocation(mActivity) + "/Icons/html_icon.png")));
                 String displayText;
                 if(extraName != null) {
                     displayText = extraName;
@@ -151,9 +151,8 @@ public class FileAdapter extends CursorAdapter {
 				switch (items.mediaType) {
 					case Academic.CONTENT_TYPE_LIBRARY_HTML:
 						iReadebook.setClass(mActivity, HtmlActivity.class);
-						Uri fileUri = Uri.fromFile(new File(
-								Environment.getExternalStorageDirectory()
-								+ items.URI));
+						Uri fileUri = Uri.fromFile(
+                              new File(ContentLocation.getContentLocation(AllogyApplication.getContext())+ items.URI));
 						iReadebook.setData(fileUri);
 						// The title for the html viewer
 						String lastPath = fileUri.getLastPathSegment();

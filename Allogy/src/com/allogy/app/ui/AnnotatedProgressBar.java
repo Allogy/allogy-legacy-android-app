@@ -21,11 +21,9 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
+import android.graphics.*;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -197,6 +195,7 @@ public class AnnotatedProgressBar extends View {
 		minProgress = DEFAULT_MIN_PROGRESS;
 		maxProgress = DEFAULT_MAX_PROGRESS;
 		Drawable tempDrawable = null;
+        int tempResId = -1;
 		Bitmap tempBmp = null;
 		int tempWidth = 0, tempHeight = 0;
 
@@ -215,10 +214,11 @@ public class AnnotatedProgressBar extends View {
 		// initialize the slider resources.
 		mSlider = new AnnotatedProgressBarSlider();
 
-		if (null != (tempDrawable = typedArr
-				.getDrawable(R.styleable.AnnotatedProgressBar_slider_background))) {
-			mSlider.mBackgroundBitmap = ((BitmapDrawable) tempDrawable)
-					.getBitmap();
+        tempResId = typedArr.getResourceId(R.styleable.AnnotatedProgressBar_slider_background, -1);
+
+		if (tempResId != -1) {
+
+			mSlider.mBackgroundBitmap = BitmapFactory.decodeResource(context.getResources(), tempResId);
 			mSlider.height = mSlider.mBackgroundBitmap.getHeight();
 			mSlider.width = mSlider.height / 2;
 		} else {
@@ -226,19 +226,20 @@ public class AnnotatedProgressBar extends View {
 			mSlider.mBackgroundBitmap = null;
 		}
 
-		if (null != (tempDrawable = typedArr
-				.getDrawable(R.styleable.AnnotatedProgressBar_slider_handler))) {
-			mSlider.mHandlerBitmap = ((BitmapDrawable) tempDrawable)
-					.getBitmap();
+        tempResId = typedArr.getResourceId(R.styleable.AnnotatedProgressBar_slider_handler, -1);
+
+        if (tempResId != -1) {
+            mSlider.mHandlerBitmap = BitmapFactory.decodeResource(context.getResources(), tempResId);
 			mSlider.width = mSlider.mHandlerBitmap.getWidth();
 			mSlider.height = mSlider.mHandlerBitmap.getHeight();
 		} else {
 			mSlider.mHandlerBitmap = null;
 		}
 
-		if (null != (tempDrawable = typedArr
-				.getDrawable(R.styleable.AnnotatedProgressBar_annotation_src))) {
-			tempBmp = ((BitmapDrawable) tempDrawable).getBitmap();
+        tempResId = typedArr.getResourceId(R.styleable.AnnotatedProgressBar_annotation_src, -1);
+
+        if (tempResId != -1) {
+            tempBmp = BitmapFactory.decodeResource(context.getResources(), tempResId);
 			tempWidth = tempBmp.getWidth();
 			tempHeight = tempBmp.getHeight();
 		} else {
@@ -251,9 +252,10 @@ public class AnnotatedProgressBar extends View {
 		mAnnotationWidth = tempWidth;
 		mAnnotationHeight = tempHeight;
 
-		if (null != (tempDrawable = typedArr
-				.getDrawable(R.styleable.AnnotatedProgressBar_body_background))) {
-			tempBmp = ((BitmapDrawable) tempDrawable).getBitmap();
+        tempResId = typedArr.getResourceId(R.styleable.AnnotatedProgressBar_body_background, -1);
+
+        if (tempResId != -1) {
+            tempBmp = BitmapFactory.decodeResource(context.getResources(), tempResId);
 		} else {
 			tempBmp = null;
 		}

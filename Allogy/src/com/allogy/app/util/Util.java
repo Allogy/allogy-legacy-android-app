@@ -16,10 +16,7 @@
 
 package com.allogy.app.util;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -28,16 +25,22 @@ import java.util.regex.Pattern;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Environment;
 import android.os.StatFs;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
+import android.widget.Toast;
+import com.allogy.app.AllogyApplication;
 import com.allogy.app.R;
+import com.allogy.app.SettingsActivity;
 
 public final class Util {
 	// /
@@ -45,12 +48,15 @@ public final class Util {
 	// /
 
 	public static final int OUT_OF_BOUNDS = -1;
-	public static final String KEY_DIRECTORY = Environment
-			.getExternalStorageDirectory().toString() + "/Allogy/Keys/";
-	public static final String ENCRYPTED_DIRECTORY = Environment
-			.getExternalStorageDirectory().toString() + "/Allogy/Encrypted/";
-	public static final String DECRYPTED_DIRECTORY = Environment
-			.getExternalStorageDirectory().toString() + "/Allogy/Decrypted/";
+	public static String KEY_DIRECTORY;
+	public static String ENCRYPTED_DIRECTORY;
+	public static String DECRYPTED_DIRECTORY;
+
+    static {
+        KEY_DIRECTORY = ContentLocation.getContentLocation(AllogyApplication.getContext()) + "/Keys/";
+        ENCRYPTED_DIRECTORY = ContentLocation.getContentLocation(AllogyApplication.getContext()) + "/Encrypted/";
+        DECRYPTED_DIRECTORY = ContentLocation.getContentLocation(AllogyApplication.getContext()) + "/Decrypted/";
+    }
 
 	// /
 	// / METHODS
@@ -238,4 +244,55 @@ public final class Util {
 
 		return false;
 	}
+
+    public static String cacheAudioFileWithExtension(Context context, String srcFileUri) {
+
+        final String cacheFilePath = File.separator + "temp.mp3";
+
+        String contentLocation = ContentLocation.getContentLocation(context);
+        File cacheFile = new File(contentLocation, cacheFilePath);
+
+        if(cacheFile.exists()) {
+            boolean success = cacheFile.delete();
+        }
+
+        File newFile = new File(contentLocation, cacheFilePath);
+        File srcFile = new File(srcFileUri);
+
+        try {
+            InputStream in = new FileInputStream(srcFile);
+            OutputStream out = new FileOutputStream(newFile);
+
+            byte[] buf = new byte[1024];
+            int len;
+            while ((len = in.read(buf)) > 0) {
+                out.write(buf, 0, len);
+            }
+            in.close();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return newFile.getAbsolutePath();
+
+    }
+
+    public static boolean audioCachePref(Context context) {
+        return PreferenceManager.getDefaultSharedPreferences
+                (context.getApplicationContext()).getBoolean(SettingsActivity.PREF_AUDIO_CACHE, false);
+    }
+
+    public static boolean audioCachePrefExists(Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext())
+                                .contains(SettingsActivity.PREF_AUDIO_CACHE);
+    }
+
+    public static void setAudioCachePref(Context context, boolean cachePref) {
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext()).edit();
+        editor.putBoolean(SettingsActivity.PREF_AUDIO_CACHE, cachePref);
+        editor.commit();
+        return;
+    }
+
 }

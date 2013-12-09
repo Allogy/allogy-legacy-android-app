@@ -21,6 +21,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import com.allogy.app.util.ContentLocation;
 import com.allogy.app.xml.parsers.LibraryFilesParser;
 import org.xml.sax.SAXException;
 
@@ -58,13 +61,15 @@ import com.allogy.encryption.SmsCrypto;
 public class VerifyActivity extends Activity {
 
 	private static final String EULA_PATH = "file:///android_asset/ptl-eula.html";
+
+    private static final String KEY_DIALOG_TEXT = "key_dialog_text";
 	EditText mCode;
 	EditText mPhone;
 	EditText mGateway;
 	Button mVerify;
 	TextView mAcceptTerms;
 
-	private static ProgressDialog mDialog;
+	private static AlertDialog mDialog;
 
 	private static Handler mHandler = new Handler() {
 
@@ -78,6 +83,22 @@ public class VerifyActivity extends Activity {
 			case 1:
 				mDialog.dismiss();
 				break;
+            case 2:
+                if(!mDialog.isShowing()) {
+                    mDialog.show();
+                }
+                if(msg.getData() != null) {
+                    mDialog.setMessage(msg.getData().getString(KEY_DIALOG_TEXT));
+                }
+                break;
+            case 3: // Content not found
+                if(mDialog.isShowing()) {
+                    mDialog.setCancelable(true);
+                    if(msg.getData() != null) {
+                        mDialog.setMessage(msg.getData().getString(KEY_DIALOG_TEXT));
+                    }
+                }
+
 			}
 		}
 
@@ -115,33 +136,32 @@ public class VerifyActivity extends Activity {
 		mAcceptTerms.setText(spanText, BufferType.SPANNABLE);
 		mAcceptTerms.setMovementMethod(LinkMovementMethod.getInstance());
 
-		mDialog = new ProgressDialog(this);
-		mDialog.setCancelable(false);
-		mDialog.setTitle(getResources().getString(R.string.loading_content));
-		mDialog.setMessage("Please Wait...");
-		mDialog.setIndeterminate(true);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		mDialog = builder.setCancelable(false)
+                         .setTitle(getResources().getString(R.string.loading_content))
+                         .setMessage("Please wait..")
+                         .create();
 
-		if (Util.canReadAndWrite()) {
+//		if (Util.canReadAndWrite()) {
+//
+//			String dir = Environment.getExternalStorageDirectory().toString()
+//					+ "/Allogy/";
+//
+//			File quizDir = new File(dir + "Quizzes");
+//			quizDir.mkdirs();
+//
+//			File keyDir = new File(dir + "Keys");
+//			keyDir.mkdirs();
+//
+//			File encrDir = new File(dir + "Encrypted");
+//			encrDir.mkdirs();
+//
+//			File decrDir = new File(dir + "Decrypted");
+//			decrDir.mkdirs();
+//
+//		}
 
-			String dir = Environment.getExternalStorageDirectory().toString()
-					+ "/Allogy/";
-
-			File quizDir = new File(dir + "Quizzes");
-			quizDir.mkdirs();
-
-			File keyDir = new File(dir + "Keys");
-			keyDir.mkdirs();
-
-			File encrDir = new File(dir + "Encrypted");
-			encrDir.mkdirs();
-
-			File decrDir = new File(dir + "Decrypted");
-			decrDir.mkdirs();
-
-		}
-
-		SharedPreferences prefs = PreferenceManager
-				.getDefaultSharedPreferences(this);
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		if (prefs.contains(SettingsActivity.PREF_VERIFIED)) {
 			if (prefs.getBoolean(SettingsActivity.PREF_VERIFIED, false)) {
 				startActivity(new Intent(this, HomeActivity.class));
@@ -151,7 +171,11 @@ public class VerifyActivity extends Activity {
 
 	}
 
-	public void onVerify(View v) {
+    public void onPreVerify(View v) {
+        new FindContentTask().execute(this);
+    }
+
+	public void onVerify() {
 
 		try {
 
@@ -225,7 +249,12 @@ public class VerifyActivity extends Activity {
 
 		@Override
 		protected void onPreExecute() {
-			mHandler.sendEmptyMessage(0);
+            Message message = new Message();
+            message.what = 2;
+            Bundle bundle = new Bundle();
+            bundle.putString(KEY_DIALOG_TEXT, "Please wait while the content gets loaded...");
+            message.setData(bundle);
+			mHandler.sendMessage(message);
 		}
 
 		@Override
@@ -235,9 +264,8 @@ public class VerifyActivity extends Activity {
 			try {
 				ContentParser parser = new ContentParser(mActivity);
 				Xml.parse(
-						new FileInputStream(Environment
-								.getExternalStorageDirectory()
-								+ "/Allogy/content.xml"), Xml.Encoding.UTF_8,
+						new FileInputStream(ContentLocation.getContentLocation(mActivity)
+                                + "/content.xml"), Xml.Encoding.UTF_8,
 						parser);
 
 			} catch (FileNotFoundException e) {
@@ -271,7 +299,12 @@ public class VerifyActivity extends Activity {
         
         @Override
         protected void onPreExecute() {
-            mHandler.sendEmptyMessage(0);
+            Message message = new Message();
+            message.what = 2;
+            Bundle bundle = new Bundle();
+            bundle.putString(KEY_DIALOG_TEXT, "Library Content Loading...");
+            message.setData(bundle);
+            mHandler.sendMessage(message);
         }
         
         @Override
@@ -281,9 +314,8 @@ public class VerifyActivity extends Activity {
             try {
                 LibraryFilesParser parser = new LibraryFilesParser(mActivity);
                 Xml.parse(
-                        new FileInputStream(Environment
-                                .getExternalStorageDirectory()
-                                + "/Allogy/library.xml"), Xml.Encoding.UTF_8,
+                        new FileInputStream(ContentLocation.getContentLocation(mActivity)
+                                + "/library.xml"), Xml.Encoding.UTF_8,
                         parser);
         
             } catch (FileNotFoundException e) {
@@ -297,6 +329,60 @@ public class VerifyActivity extends Activity {
             return true;
         }
         
+    }
+
+    private static class FindContentTask extends AsyncTask<Context, Void, Boolean> {
+
+        Activity context;
+
+        @Override
+        protected void onPreExecute() {
+            Message msg = new Message();
+            msg.what = 2;
+            Bundle bundle = new Bundle();
+            bundle.putString(KEY_DIALOG_TEXT, "Searching content");
+            msg.setData(bundle);
+            mHandler.sendMessage(msg);
+        }
+
+        @Override
+        protected Boolean doInBackground(Context... params) {
+
+            try{
+                context = (Activity) params[0];
+                ContentLocation.searchAllogyContent(context);
+
+                if(ContentLocation.isContentAvailable(context)) {
+                    return true;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+
+            }
+
+            return false;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+
+            if(result) {
+                mHandler.sendEmptyMessage(1);
+                ((VerifyActivity) context).onVerify();
+            } else {
+                Message msg = new Message();
+                msg.what = 3;
+                Bundle bundle = new Bundle();
+                bundle.putString(KEY_DIALOG_TEXT,
+                        "Content not found. Please verify that you have content in the SD Card " +
+                                "(or external storage) under the folder " +
+                                "\"Allogy\" and retry. Click back to close the dialog box.");
+                msg.setData(bundle);
+                mHandler.sendMessage(msg);
+            }
+
+        }
     }
 
 }

@@ -18,10 +18,7 @@ package com.allogy.app.media;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -32,12 +29,15 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
+import android.net.Uri;
 import android.os.Binder;
+import android.os.Build;
 import android.os.IBinder;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
+import android.widget.Toast;
 import com.allogy.app.R;
 import com.allogy.app.adapter.AudioPlaylistArrayAdapter;
 import com.allogy.app.provider.Academic;
@@ -73,6 +73,7 @@ public final class AudioPlayerService extends Service implements PlaybackTimer {
 
 	public static final String LOG_TAG = "AudioPlayerService";
 	public static final boolean DBG_LOG_ENABLE = false;
+    private static final boolean FORCE_CACHE = false;
 	// public static final int ERROR = -1;
 
 	public static final String INTENT_EXTRA_LESSON_FILE_ID = "audioplayerservice.lessonfileid";
@@ -400,7 +401,14 @@ public final class AudioPlayerService extends Service implements PlaybackTimer {
 
 			currentAudio = audio;
 
-			File audioFile = new File(currentAudio.getUri());
+            File audioFile = null;
+
+            if(shouldCache()) {
+                String cacheFile = Util.cacheAudioFileWithExtension(AudioPlayerService.this, currentAudio.getUri());
+                audioFile = new File(cacheFile);
+            } else {
+                audioFile = new File(currentAudio.getUri());
+            }
 			
 			if(DBG_LOG_ENABLE) {
 				Log.i(LOG_TAG, "playbackHasStopped : " + playbackHasStopped +
@@ -409,7 +417,7 @@ public final class AudioPlayerService extends Service implements PlaybackTimer {
 			
 			if (playbackHasStopped && audioFile.exists()) {
 				try {
-					mMediaPlayer.setDataSource(currentAudio.getUri());
+					mMediaPlayer.setDataSource(audioFile.getAbsolutePath());
 					mMediaPlayer.prepare();
 					result = mMediaPlayer.getDuration();
 					if(DBG_LOG_ENABLE) {
@@ -426,6 +434,9 @@ public final class AudioPlayerService extends Service implements PlaybackTimer {
 					if(DBG_LOG_ENABLE) {
 						ioe.printStackTrace();
 					}
+                    Toast.makeText(AudioPlayerService.this,
+                            Build.BRAND + " " + Build.MODEL + " " +
+                                    Build.DEVICE + " " + Build.PRODUCT + " ", Toast.LENGTH_LONG).show();
 				}
 			}
 
@@ -694,4 +705,69 @@ public final class AudioPlayerService extends Service implements PlaybackTimer {
 			return new AudioPlaylistArrayAdapter(context, mPlayList);
 		}
 	}
+
+    private boolean shouldCache() {
+
+        if(FORCE_CACHE) {
+            return true;
+        }
+
+        if(Util.audioCachePrefExists(this)) {
+            return Util.audioCachePref(this);
+        }
+
+        Set entrySet = SearchStringsForCaching.entrySet();
+
+        Iterator<Map.Entry<String, Boolean>> entryIterator1 = entrySet.iterator();
+
+        while (entryIterator1.hasNext()) {
+
+            boolean present;
+
+            Map.Entry<String, Boolean> entry = entryIterator1.next();
+            String srchStr = entry.getKey();
+
+            switch (0) {
+                case 0: // Search the device
+                    present = Build.DEVICE.toLowerCase().contains(srchStr);
+                    if(present) {
+                        Toast.makeText(this, "Special Device : " + Build.DEVICE + " Enabling caching", Toast.LENGTH_LONG).show();
+                        Util.setAudioCachePref(this, entry.getValue());
+                        return entry.getValue();
+                    }
+                case 1: // Search the manufacturer
+                    present = Build.BRAND.toLowerCase().contains(srchStr);
+                    if(present) {
+                        Toast.makeText(this, "Special Brand : " + Build.BRAND + " Enabling caching", Toast.LENGTH_LONG).show();
+                        Util.setAudioCachePref(this, entry.getValue());
+                        return entry.getValue();
+                    }
+                case 2:
+                    present = Build.PRODUCT.toLowerCase().contains(srchStr);
+                    if(present) {
+                        Toast.makeText(this, "Special Product : " + Build.PRODUCT + " Enabling caching", Toast.LENGTH_LONG).show();
+                        Util.setAudioCachePref(this, entry.getValue());
+                        return entry.getValue();
+                    }
+                case 3:
+                    present = Build.MODEL.toLowerCase().contains(srchStr);
+                    if(present) {
+                        Toast.makeText(this, "Special Model : " + Build.MODEL + " Enabling caching", Toast.LENGTH_LONG).show();
+                        Util.setAudioCachePref(this, entry.getValue());
+                        return entry.getValue();
+                    }
+            }
+        }
+
+        return false;
+
+    }
+
+    // Names of devices for which audio should be cached before attempting to play
+    private static Map<String, Boolean> SearchStringsForCaching = new HashMap<String, Boolean>();
+
+    static {
+        SearchStringsForCaching.put("ubislate7c+", Boolean.TRUE);
+    }
+
 }

@@ -40,6 +40,7 @@ import com.allogy.app.R.string;
 import com.allogy.app.SettingsActivity;
 import com.allogy.app.provider.Academic;
 import com.allogy.app.provider.Academic.Progress;
+import com.allogy.app.util.ContentLocation;
 import com.allogy.app.xml.parsers.QuizParser;
 import org.xml.sax.SAXException;
 
@@ -51,7 +52,7 @@ import java.util.ArrayList;
 public class QuizActivity extends Activity {
 	
 	private static final String TAG = "QuizActivity";
-	private static final boolean DBG_LOG_ENABLE = true;
+	private static final boolean DBG_LOG_ENABLE = false;
 	private static final String LAST_MESSAGE = "last_message";
 	
 	private static final String QUIZ_TAG = "QUIZ(id:";
@@ -141,8 +142,7 @@ public class QuizActivity extends Activity {
 			Log.i("QuizActivity", "Loading Quiz for Lesson: " + mLessonId);
 			Log.i("QuizActivity", "Loading Quiz from : " + mPath);
 
-			quiz = parseQuiz(this, Environment.getExternalStorageDirectory()
-					+ "/Allogy/Files/" + mPath);
+			quiz = parseQuiz(this, ContentLocation.getContentLocation(this) + "/Files/" + mPath);
 
 			setContentView(R.layout.activity_quiz);
 			
